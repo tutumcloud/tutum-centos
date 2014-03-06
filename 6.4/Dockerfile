@@ -7,13 +7,13 @@ RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && ssh-keygen -q -N 
 
 # Add scripts
 RUN rpm -i http://dl.fedoraproject.org/pub/epel/6/x86_64/pwgen-2.06-5.el6.x86_64.rpm
-ADD https://raw.github.com/tutumcloud/tutum-centos/master/set_root_pw.sh /set_root_pw.sh
-ADD https://raw.github.com/tutumcloud/tutum-centos/master/run.sh /run.sh
+ADD set_root_pw.sh /set_root_pw.sh
+ADD run.sh /run.sh
 RUN chmod +x /*.sh
 
 # Add tutum motd
 RUN rm -f /etc/motd
-ADD http://s.tutum.co/motd /etc/motd
+ADD motd /etc/motd
 
 EXPOSE 22
 CMD ["/run.sh"]

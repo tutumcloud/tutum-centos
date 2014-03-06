@@ -15,20 +15,36 @@ To create the image `tutum/centos`, execute the following commands on the tutum-
 Running tutum/centos
 --------------------
 
-Run a container from the image you created earlier:
+Run a container from the image you created earlier binding it to port 2222 in all interfaces:
 
-	sudo docker run -d -p 0.0.0.0::22 tutum/centos:6.4
+	sudo docker run -d -p 0.0.0.0:2222:22 tutum/centos:6.4
+
+The first time that you run your container, a random password will be generated
+for user `root`. To get the password, check the logs of the container by running:
+
+	docker logs <CONTAINER_ID>
+
+You will see an output like the following:
+
+	========================================================================
+	You can now connect to this CentOS container via SSH using:
+
+	    ssh -p <port> root@<host>
+	and enter the root password 'U0iSGVUCr7W3' when prompted
+
+	Please remember to change the above password as soon as possible!
+	========================================================================
+
+In this case, `U0iSGVUCr7W3` is the password allocated to the `root` user.
+
+Done!
 
 
-It will print the new container ID (like `d35bf1374e88`). Get the allocated external port:
+Setting a specific password for the root account
+------------------------------------------------
 
-	sudo docker port d35bf1374e88 22
+If you want to use a preset password instead of a random generated one, you can
+set the environment variable `ROOT_PASS` to your specific password when running the container:
 
+	docker run -d -p 0.0.0.0:2222:22 -e ROOT_PASS="mypass" tutum/centos:6.4
 
-It will print the allocated port (like 0.0.0.0:4751). Test your deployment:
-
-	ssh -p 4751 root@localhost
-
-Use `changeme` as the initial password.
-
-Enjoy!
