@@ -11,9 +11,5 @@ ADD set_root_pw.sh /set_root_pw.sh
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
 
-# Add tutum motd
-RUN rm -f /etc/motd
-ADD motd /etc/motd
-
 EXPOSE 22
 CMD ["/run.sh"]
