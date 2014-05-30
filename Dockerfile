@@ -1,5 +1,5 @@
-FROM centos:6.4
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+FROM centos:centos6
+MAINTAINER Feng Honglin <hfeng@tutum.co>
 
 # Install packages and set up sshd
 RUN yum -y install openssh-server
