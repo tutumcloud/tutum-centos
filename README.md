@@ -9,17 +9,13 @@ Usage
 
 To create the image `tutum/centos` with one tag per CentOS release, execute the following commands on the tutum-ubuntu repository folder:
 
-	git checkout master
 	docker build -t tutum/centos:latest .
 
-	git checkout centos5
-	docker build -t tutum/centos:centos5 .
+	docker build -t tutum/centos:centos5 centos5
 
-	git checkout centos6
-	docker build -t tutum/centos:centos6 .
+	docker build -t tutum/centos:centos6 centos6
 
-	git checkout centos7
-	docker build -t tutum/centos:centos7 .
+	docker build -t tutum/centos:centos7 centos7
 
 
 Running tutum/centos
@@ -58,3 +54,11 @@ set the environment variable `ROOT_PASS` to your specific password when running 
 
 	docker run -d -p 0.0.0.0:2222:22 -e ROOT_PASS="mypass" tutum/centos
 
+Adding authorized keys
+----------------------
+
+If you want to use ssh key for login, you can use `AUTHORIZED_KEYS` environment variable. The public keys are separated by `,`:
+
+    docker run -d -p 2222:22 AUTHORIZED_KEYS="pubkey1, pubkey2, pubkey3" tutum/centos:centos7
+
+If you put the corresponding private key under `~/.ssh/` where you run ssh command, you will not be asked to input the password.
