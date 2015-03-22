@@ -59,6 +59,6 @@ Adding authorized keys
 
 If you want to use ssh key for login, you can use `AUTHORIZED_KEYS` environment variable. The public keys are separated by `,`:
 
-    docker run -d -p 2222:22 AUTHORIZED_KEYS="pubkey1, pubkey2, pubkey3" tutum/centos:centos7
+    docker run -d -p 2222:22 -e AUTHORIZED_KEYS="pubkey1, pubkey2, pubkey3" tutum/centos:centos7
 
 If you put the corresponding private key under `~/.ssh/` where you run ssh command, you will not be asked to input the password.
