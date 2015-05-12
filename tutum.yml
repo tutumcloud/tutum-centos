@@ -1,0 +1,6 @@
+centos:
+  image: tutum/centos
+  ports:
+    - 2222:22
+  environment:
+    -AUTHORIZED_KEYS="YOUR SSH PUBLIC KEY HERE"
