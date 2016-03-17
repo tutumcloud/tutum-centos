@@ -1,6 +1,9 @@
 tutum-centos
 ============
 
+**This image will be deprecated soon. Please use the docker official image:** https://hub.docker.com/_/centos/
+
+
 [![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
 
 Simple CentOS docker image with SSH access
